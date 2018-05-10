@@ -25,8 +25,10 @@ numberOfInputs = len(scriptsInput)
 numberOfOutputs = len(scriptsOutput);
 
 if len(stackItems) > 0:
+  if len(stackItems) != numberOfInputs:
+    raise Exception("stack items and number of inputs not equal")
   extendedTransactionFormat = True
-  flags = 1 # can be zero or non-zero - when wittness script is used, flags is always 1
+  flags = 1 # can be zero (if not extended tx format) or non-zero (when wittness script is used, flags is always 1)
 
 size = 8 # for version and lockTime
 if extendedTransactionFormat:
